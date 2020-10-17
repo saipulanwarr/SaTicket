@@ -150,6 +150,7 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:id="@+id/btn_ticket_pisa"
                         android:orientation="vertical"
                         android:layout_weight="1"
                         android:gravity="center"
