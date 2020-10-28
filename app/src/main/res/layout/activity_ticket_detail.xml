@@ -8,11 +8,10 @@
     tools:context=".TicketDetailAct">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/header_ticket_detail"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/bgheader_pisa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/mregular"
-        android:text="Menara Pisa"
         android:textAlignment="center"
         android:textColor="#FFF"
         android:textSize="24sp"
@@ -38,7 +36,6 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/mlight"
         android:lineSpacingExtra="9dp"
-        android:text="Pisa, Itally"
         android:textAlignment="center"
         android:textColor="#FFF"
         android:textSize="20sp"
@@ -110,7 +107,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mregular"
-                    android:text="3 Photo Sport"
                     android:textColor="@color/blackPrimary"
                     android:textSize="16sp" />
 
@@ -150,7 +146,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mregular"
-                    android:text="Wifi Avaliable"
                     android:textColor="@color/blackPrimary"
                     android:textSize="16sp" />
 
@@ -190,7 +185,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mregular"
-                    android:text="13 Festival"
                     android:textColor="@color/blackPrimary"
                     android:textSize="16sp" />
 
@@ -214,7 +208,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/mlight"
             android:lineSpacingExtra="8dp"
-            android:text="The learning of the Power of pisa comes into the story"
             android:textColor="@color/grayPrimary"
             android:textSize="18sp"/>
 
