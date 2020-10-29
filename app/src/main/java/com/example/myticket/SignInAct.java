@@ -50,37 +50,58 @@ public class SignInAct extends AppCompatActivity {
         btn_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                btn_sign_in.setEnabled(false);
+                btn_sign_in.setText("Loading.....");
+
                 final String username = xusername.getText().toString();
                 final String password = xpassword.getText().toString();
 
-                reference = FirebaseDatabase.getInstance().getReference().child("Users").child(username);
-                reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            String passwordFromFirebase = snapshot.child("password").getValue().toString();
+                if(username.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Username kosong", Toast.LENGTH_SHORT).show();
+                    btn_sign_in.setEnabled(true);
+                    btn_sign_in.setText("SIGN IN");
 
-                            if(password.equals(passwordFromFirebase)){
-                                SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString(username_key, xusername.getText().toString());
-                                editor.apply();
+                }else{
+                    if(password.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Password Kosong", Toast.LENGTH_SHORT).show();
+                        btn_sign_in.setEnabled(true);
+                        btn_sign_in.setText("SIGN IN");
+                    }else{
+                        reference = FirebaseDatabase.getInstance().getReference().child("Users").child(username);
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    String passwordFromFirebase = snapshot.child("password").getValue().toString();
 
-                                Intent gotohome = new Intent(SignInAct.this, HomeAct.class);
-                                startActivity(gotohome);
-                            }else{
-                                Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();
+                                    if(password.equals(passwordFromFirebase)){
+                                        SharedPreferences sharedPreferences = getSharedPreferences(USERNAME_KEY, MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString(username_key, xusername.getText().toString());
+                                        editor.apply();
+
+                                        Intent gotohome = new Intent(SignInAct.this, HomeAct.class);
+                                        startActivity(gotohome);
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), "Password Salah", Toast.LENGTH_SHORT).show();
+                                        btn_sign_in.setEnabled(true);
+                                        btn_sign_in.setText("SIGN IN");
+                                    }
+                                }else{
+                                    Toast.makeText(getApplicationContext(), "Username tidak ada!", Toast.LENGTH_SHORT).show();
+                                    btn_sign_in.setEnabled(true);
+                                    btn_sign_in.setText("SIGN IN");
+                                }
                             }
-                        }else{
-                            Toast.makeText(getApplicationContext(), "Username tidak ada!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
+                            }
+                        });
                     }
-                });
+                }
             }
         });
     }

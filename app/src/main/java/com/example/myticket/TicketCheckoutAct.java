@@ -30,8 +30,9 @@ public class TicketCheckoutAct extends AppCompatActivity {
     Integer valuetotalharga = 0;
     Integer valuehargatiket = 0;
     ImageView notice_uang;
+    Integer sisa_balance = 0;
 
-    DatabaseReference reference, reference2, reference3;
+    DatabaseReference reference, reference2, reference3, reference4;
 
     String USERNAME_KEY = "usernamekey";
     String username_key = "";
@@ -157,6 +158,7 @@ public class TicketCheckoutAct extends AppCompatActivity {
                 reference3.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        reference3.getRef().child("id_ticket").setValue(nama_wisata.getText().toString() + nomor_transaksi);
                         reference3.getRef().child("nama_wisata").setValue(nama_wisata.getText().toString());
                         reference3.getRef().child("lokasi").setValue(lokasi.getText().toString());
                         reference3.getRef().child("ketentuan").setValue(ketentuan.getText().toString());
@@ -166,6 +168,20 @@ public class TicketCheckoutAct extends AppCompatActivity {
 
                         Intent gotosuccessticket = new Intent(TicketCheckoutAct.this, SuccessBuyTicketAct.class);
                         startActivity(gotosuccessticket);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                reference4 = FirebaseDatabase.getInstance().getReference().child("Users").child(username_key_new);
+                reference4.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        sisa_balance = mybalance - valuetotalharga;
+                        reference4.getRef().child("user_balance").setValue(sisa_balance);
                     }
 
                     @Override

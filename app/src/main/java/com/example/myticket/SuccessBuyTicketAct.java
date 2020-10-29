@@ -2,7 +2,9 @@ package com.example.myticket;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -38,5 +40,21 @@ public class SuccessBuyTicketAct extends AppCompatActivity {
 
         btn_view_ticket.startAnimation(btt);
         btn_my_dashboard.startAnimation(btt);
+
+        btn_view_ticket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotoprofile = new Intent(SuccessBuyTicketAct.this, MyProfileAct.class);
+                startActivity(gotoprofile);
+            }
+        });
+
+        btn_my_dashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gotohome = new Intent(SuccessBuyTicketAct.this, HomeAct.class);
+                startActivity(gotohome);
+            }
+        });
     }
 }
