@@ -47,7 +47,7 @@ public class TicketDetailAct extends AppCompatActivity {
         btn_back = findViewById(R.id.btn_back);
 
         Bundle bundle = getIntent().getExtras();
-        String jenis_tiket_baru = bundle.getString("jenis_tiket");
+        final String jenis_tiket_baru = bundle.getString("jenis_tiket");
 
         reference = FirebaseDatabase.getInstance().getReference().child("Wisata").child(jenis_tiket_baru);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -72,6 +72,7 @@ public class TicketDetailAct extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent gotocheckout = new Intent(TicketDetailAct.this, TicketCheckoutAct.class);
+                gotocheckout.putExtra("jenis_tiket", jenis_tiket_baru);
                 startActivity(gotocheckout);
             }
         });
