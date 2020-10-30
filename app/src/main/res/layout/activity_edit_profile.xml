@@ -92,6 +92,7 @@
                         android:textSize="20sp" />
 
                     <EditText
+                        android:id="@+id/xnama_lengkap"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
@@ -121,6 +122,7 @@
                         android:textSize="20sp" />
 
                     <EditText
+                        android:id="@+id/xbio"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
@@ -150,6 +152,7 @@
                         android:textSize="20sp" />
 
                     <EditText
+                        android:id="@+id/xusername"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
@@ -179,11 +182,12 @@
                         android:textSize="20sp" />
 
                     <EditText
+                        android:id="@+id/xpassword"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
                         android:fontFamily="@font/mmedium"
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:lines="1"
                         android:paddingLeft="12dp"
                         android:textColor="@color/blackPrimary" />
@@ -208,6 +212,7 @@
                         android:textSize="20sp" />
 
                     <EditText
+                        android:id="@+id/xemail_address"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/bg_input_edit"
@@ -260,6 +265,7 @@
             </com.github.florent37.shapeofview.shapes.CircleView>
 
             <Button
+                android:id="@+id/btn_add_new_photo"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:background="@drawable/bg_btn_plus_blue"
@@ -275,7 +281,7 @@
                 app:layout_constraintTop_toTopOf="parent"  />
 
             <Button
-                android:id="@+id/btn_continue"
+                android:id="@+id/btn_save"
                 android:layout_width="200dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="24dp"
@@ -294,6 +300,7 @@
                 android:layout_height="55dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
                 android:background="@drawable/bg_layout_white"
                 android:gravity="center"
                 android:orientation="vertical"
